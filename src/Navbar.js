@@ -26,9 +26,9 @@ const Navbar = props => {
         <div className= "navigation">
             <nav className = "navbar">
                 <ul className ="navbar-nav">
-                    <li className ="nav-item"><a className={activeNav[0]} href="#Home" onClick={() => {setactiveNav(["active", "", ""]); setactivepage(1)}}>home</a></li>
-                    <li className ="nav-item"><a className={activeNav[1]} href="#Projects" onClick={() => {setactiveNav(["", "active", ""]); setactivepage(2)}}>projects</a></li>
-                    <li className ="nav-item"><a className={activeNav[2]} href="#Contact" onClick={() => {setactiveNav(["", "", "active"]); setactivepage(3)}}>contact</a></li>
+                    <li className ="nav-item"><a className={activeNav[0]} href="#Home" target="_blank" onClick={() => {setactiveNav(["active", "", ""]); setactivepage(1)}}>home</a></li>
+                    <li className ="nav-item"><a className={activeNav[1]} href="#Projects" target="_blank" onClick={() => {setactiveNav(["", "active", ""]); setactivepage(2)}}>projects</a></li>
+                    <li className ="nav-item"><a className={activeNav[2]} href="#Contact" target="_blank" onClick={() => {setactiveNav(["", "", "active"]); setactivepage(3)}}>contact</a></li>
                 </ul>
             </nav>
 
