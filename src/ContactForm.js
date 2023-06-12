@@ -1,7 +1,7 @@
 const ContactForm = () => {
 
     return (  
-        <form name="contact" method="POST" data-netlify="true" onSubmit="submit">
+        <form name="contact" method="POST" onSubmit="submit" netlify>
             <input type="hidden" name="form-name" value="contact" />
                 <div className="WholeForm">
                     <div className="FormContents">
