@@ -1,0 +1,36 @@
+.socialbar {
+    position: fixed;
+    width: 100%;
+    bottom: 2vh;
+    left: 1vw;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+  
+  .socialbar a{
+    text-decoration: none;
+    color: white;
+  }
+  
+  .socialbar-social {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 1.5em;
+  }
+  
+  .social-item {
+    transition: opacity 0.2s ease-out;
+  }
+  
+  .social-item:hover {
+    opacity: 20%;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .socialbar-social {
+      justify-content: center;
+      margin-left: -11vw;
+    }
+  }

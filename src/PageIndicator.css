@@ -1,0 +1,63 @@
+.line {
+    content: '';
+    width: 1px;
+    height: 15vh;
+    background-color: white;
+    float: left;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+.indicator1 {
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 5vh;
+    background-color: white;
+    animation: indicIn .5s ease;
+}
+
+.indicator2 {
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 5vh;
+    background-color: white;
+    margin-top: 5vh;
+    animation: indicIn .5s ease;
+}
+
+.indicator3 {
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 5vh;
+    background-color: white;
+    margin-top: 10vh;
+    animation: indicIn .5s ease;
+}
+
+.line p {
+    text-decoration: none;
+    color: white;
+    font-size: 0.8em;
+    position: absolute;
+    margin-top: 0.5em;
+    right: 0.8em;
+    cursor: default;
+}
+
+@keyframes indicIn {
+    0%{
+        opacity : 0;
+    }
+    100%{
+        opacity : 1;
+    }
+}
+
+@media only screen and (max-width: 1120px) {
+    .line p {
+        opacity: 0;
+    }
+}
