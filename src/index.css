@@ -73,6 +73,7 @@ section {
 }
 
 .homecontents {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,7 +83,6 @@ section {
   padding-top: 2em;
   width: 100%;
   height: 100vh;
-  padding-right: 3vw;
 }
 
 #title {
