@@ -143,4 +143,7 @@ section {
     justify-content: center;
     align-items: center;
   }
+  .hide {
+    opacity: 1;
+  }
 }

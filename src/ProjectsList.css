@@ -99,7 +99,7 @@
         flex-direction: column;
         height: 30vh;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow-x: hidden;
     }
     .projects-item:hover > .project-image {
         display: none;
