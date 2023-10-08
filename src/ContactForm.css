@@ -1,8 +1,8 @@
 .WholeForm {
-    position: relative;
     box-sizing: border-box;
-    margin-top: 17vh;
-    z-index: 5;
+    position: relative;
+    margin-top: 28vh;
+    z-index: 3;
 }
 
 .FormContents {
@@ -101,11 +101,11 @@ label {
       }
 }
 
-@media only screen and (max-height: 850px) {
+/* @media only screen and (max-height: 850px) {
     .WholeForm {
         margin-top: 10vh;
     }
-}
+} */
 
 @media only screen and (max-height: 700px) {
     .WholeForm {

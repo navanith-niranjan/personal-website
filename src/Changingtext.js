@@ -2,14 +2,18 @@ import { useState, useEffect } from 'react';
 
 const Changingtext = () => {
     
-    const [arr, setArr] = useState(['third year student @ uwaterloo', 'studying mechanical engineering', 'breaking into the tech industry']);
+    const [arr, setArr] = useState([
+      'mechanical engineering @ uwaterloo',
+      'breaking into the tech industry',
+      '📍toronto, ontario, canada',
+    ]);
     const [index, setIndex] = useState(0);
     
     useEffect(() => {
       const interval = setInterval(() => {
        let newIndex = index === (arr.length - 1) ? 0 : index + 1;
         setIndex(newIndex);
-      }, 3000)
+      }, 5000)
       return () => clearInterval(interval);
     })
 

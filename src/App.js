@@ -12,73 +12,80 @@ import ContactForm from './ContactForm'
 
 import Changingtext from './Changingtext';
 
-import { useState, useRef, useEffect } from "react";
-import { useIntersection } from "react-use";
+import pythonicon from './icons/python.svg';
+import javascripticon from './icons/javascript.svg';
+import reacticon from './icons/react.svg';
+import cplusplusicon from './icons/cplusplus.svg';
+import mysqlicon from './icons/mysql.svg';
+import djangoicon from './icons/django.svg';
+
+import React, { useState } from 'react';
 
 function App() {
 
-  const sectionRef1 = useRef(null);
-  const sectionRef2 = useRef(null);
-  const sectionRef3 = useRef(null);
+  const techStack = [
+    { icon: pythonicon, text: 'python' },
+    { icon: javascripticon, text: 'javascript' },
+    { icon: cplusplusicon, text: 'c++' },
+    { icon: mysqlicon, text: 'mysql' },
+    { icon: djangoicon, text: 'django' },
+    { icon: reacticon, text: 'react' },
+  ];
 
-  const options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 1
+  const [selectedCategory, setSelectedCategory] = useState('all projects');
+
+  const filterProjects = (category) => {
+    setSelectedCategory(category);
   };
-
-  const intersection1 = useIntersection(sectionRef1, options);
-  const intersection2 = useIntersection(sectionRef2, options);
-  const intersection3 = useIntersection(sectionRef3, options);
-
-  const [isVisible,setisVisible] = useState(["hide","hide","hide"]);
-
-  useEffect (() => {
-    if (intersection1?.isIntersecting === true) {
-      setisVisible(["show","hide","hide"]);
-    } if (intersection2?.isIntersecting === true) {
-      setisVisible(["hide","show","hide"]);
-    } if (intersection3?.isIntersecting === true) {
-      setisVisible(["hide","hide","show"]);
-    }
-  },[intersection1,intersection2,intersection3]);
 
   return (
     <div className="App">
-      
-      <div className ="boxborder"></div>
-      
-      <Navbar isVisible={isVisible} />
+    
+      <Navbar />
       <Socialbar />
 
-      <div ref={sectionRef1} className={isVisible[0]}> 
-        <section id="Home">
-            <div className="homecontents">
-                <p id="title">Navanith Niranjan</p>
-                <Changingtext />
-            </div>
-        </section>
+      <div className ="footer">
+        <div className ="boxborder"></div>
       </div>
 
-      <div ref={sectionRef2} className={isVisible[1]}>
-        <section id="Projects">
-            <div className="header">
-                <span className="headerleft">projects</span>
-                <span className="headerright">navanith niranjan</span>
-            </div>
-            <ProjectsList />
-        </section>
+      <div className="copyright">
+        &copy; 2023 Navanith Niranjan. All Rights Reserved.
       </div>
+
+      <section id="Home">
+          <div className="homecontents">
+              <p id="title">Navanith Niranjan</p>
+              <Changingtext />
+              <div id="description">
+                <p>i am a third-year <span className='green-text'>mechanical engineering</span> ⚙️ student at the <span className='yellow-text'>university of waterloo</span> 🏫. 
+                my passion for technology and problem-solving has naturally led me to pursue a career
+                in the <span className='blue-text'>tech industry</span> 💻.</p>
+                
+                <p>i am proficient in:</p>
+                <div className="tech-stack">
+                  {techStack.map((item, index) => (
+                    <div className='tech-icon-item'>
+                      <img className="tech-icon-img" src={item.icon}></img>
+                      <p className='tech-icon-text'>{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+          </div>
+      </section>
+
+      <section id="Projects">
+          <nav className='project-tabs'>
+            <li className={selectedCategory === 'all projects' ? 'selected' : ''} onClick={() => filterProjects('all projects')}>all projects</li>
+            <li className={selectedCategory === 'software' ? 'selected' : ''} onClick={() => filterProjects('software')}>software</li>
+            <li className={selectedCategory === 'mechanical' ? 'selected' : ''} onClick={() => filterProjects('mechanical')}>mechanical</li>
+          </nav>
+          <ProjectsList selectedCategory={selectedCategory}/>
+      </section>
  
-      <div ref={sectionRef3} className={isVisible[2]}>
-        <section id="Contact">
-            <div className="header">
-                <div className="headerleft">contact</div>
-                <div className="headerright">navanith niranjan</div>
-            </div>
-            <ContactForm />
-        </section>
-      </div>
+      <section id="Contact">
+          <ContactForm />
+      </section>
 
     </div>
   );

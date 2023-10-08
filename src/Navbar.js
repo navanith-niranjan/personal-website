@@ -1,41 +1,70 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-import './PageIndicator.css';
-import PageIndicator from './PageIndicator';
+const Navbar = () => {
+  const [activeNav, setActiveNav] = useState([]);
+  const navItemsRefs = useRef([]);
 
-const Navbar = props => {
+  const navigationItems = [
+    { label: 'home', target: 'Home' },
+    { label: 'projects', target: 'Projects' },
+    { label: 'contact', target: 'Contact' },
+  ];
 
-    const [activeNav, setactiveNav] = useState(["active","",""]);
-    const [activepage, setactivepage] = useState(1);
+  const handleNavClick = (item) => {
+    const targetElement = document.getElementById(item.target);
+    if (targetElement) {
+      targetElement.scrollIntoView();
+    }
+  };
 
-    useEffect(()=>{
-        if (props.isVisible[0] === "show") {
-            setactiveNav(["active","",""]);
-            setactivepage(1);
-        } else if (props.isVisible[1] === "show") {
-            setactiveNav(["","active",""]);
-            setactivepage(2);
-        } else if (props.isVisible[2] === "show") {
-            setactiveNav(["","","active"]);
-            setactivepage(3);
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.35,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const targetId = entry.target.getAttribute('id');
+        if (entry.isIntersecting) {
+          setActiveNav(targetId);
+          document.getElementById(targetId).style.opacity = 1; 
+        } 
+        else {
+          document.getElementById(targetId).style.opacity = 0; 
         }
-    },[props.isVisible])
+      });
+    }, options);
 
+    navigationItems.forEach((item) => {
+      const targetElement = document.getElementById(item.target);
+      if (targetElement) {
+        navItemsRefs.current.push(targetElement);
+        observer.observe(targetElement);
+      }
+    });
 
-    return ( 
-        <div className= "navigation">
-            <nav className = "navbar">
-                <ul className ="navbar-nav">
-                    <li className ="nav-item"><a className={activeNav[0]} href="#Home" onClick={() => {setactiveNav(["active", "", ""]); setactivepage(1)}}>home</a></li>
-                    <li className ="nav-item"><a className={activeNav[1]} href="#Projects" onClick={() => {setactiveNav(["", "active", ""]); setactivepage(2)}}>projects</a></li>
-                    <li className ="nav-item"><a className={activeNav[2]} href="#Contact" onClick={() => {setactiveNav(["", "", "active"]); setactivepage(3)}}>contact</a></li>
-                </ul>
-            </nav>
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
-            <PageIndicator pageNum = {activepage}/>
+  return (
+    <div className="navigation">
+      <nav className="navbar">
+        <ul className="navbar-nav">
+          {navigationItems.map((item, index) => (
+            <li className='nav-item' key={index}>
+              <a className={item.target === activeNav ? 'active' : ''} href={`#${item.target}`} onClick={() => handleNavClick(index)}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  );
+};
 
-        </div>
-    );
-}
- 
 export default Navbar;
