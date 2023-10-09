@@ -150,7 +150,6 @@ section {
 
 .tech-icon-item:hover .tech-icon-text {
   opacity: 100%;
-
 }
 
 .copyright {
@@ -161,6 +160,7 @@ section {
   font-family: sans-serif;
   font-size: 0.4em;
   z-index: 5;
+  pointer-events: none;
 }
 
 #Projects, #Contact {
@@ -193,4 +193,41 @@ section {
 .project-tabs li:hover {
   background-color: #0078d4;
   color: white; 
+}
+
+/* For smaller screens */
+@media screen and (max-width: 768px) {
+  .boxborder {
+    border-style: none;
+  }
+
+  section {
+    overflow-x: visible;
+  }
+
+  #title, #changingtext {
+    width: 75%;
+  }
+
+  .tech-stack {
+    justify-content: center;
+  }
+
+  .project-tabs {
+    gap: 0.5em;
+    font-size: 1.5rem;
+  }
+
+  .copyright {
+    position: fixed;
+    width: 100%;
+    bottom: 1vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 0.4em;
+    z-index: 5;
+  }
 }

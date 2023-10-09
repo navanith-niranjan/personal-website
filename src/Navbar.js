@@ -18,11 +18,15 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.35,
+      threshold: isMobile ? 0.15 : 0.35,
     };
+
+    console.log(options.threshold);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
