@@ -20,7 +20,6 @@ const ProjectsList = ({ selectedCategory }) => {
             description: '',
             techStack: ['react', 'javascript', 'html', 'css'],
             link1: ["github.svg", "https://github.com/navanith-niranjan/personal-website"], 
-            link2: ["arrow.svg", "https://navanithniranjan.com"],
             category: 'software',
         },
         {
