@@ -57,7 +57,7 @@ function App() {
               <p id="title">Navanith Niranjan</p>
               <Changingtext />
               <div id="description">
-                <p>i am a third-year <span className='green-text'>mechanical engineering</span> ⚙️ student at the <span className='yellow-text'>university of waterloo</span> 🏫. 
+                <p>i am a fourth-year <span className='green-text'>mechanical engineering</span> ⚙️ student at the <span className='yellow-text'>university of waterloo</span> 🏫. 
                 my passion for technology and problem-solving has naturally led me to pursue a career
                 in the <span className='blue-text'>tech industry</span> 💻.</p>
                 
